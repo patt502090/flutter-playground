@@ -8,7 +8,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final
+  final _usernameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +20,11 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(32.0),
           child: Column(
             children: [
-              TextField(decoration: InputDecoration(labelText: "Username")),
-              TextField(decoration: InputDecoration(labelText: "Password"))
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(labelText: "Username"),
+              ),
+              TextField(decoration: InputDecoration(labelText: "Password")),
             ],
           ),
         ),
