@@ -8,21 +8,21 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Login Page")),
       body: Container(
         width: double.infinity,
-        color: Colors.amber.withValues(alpha: 0.9),
-        child: Column(
-          crossAxisAlignment:  CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(child: Text("patt.com"), color: Colors.red,),
-            Text("BodyDesc"),
-            Text("BodyDesc"),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            children: [
+              TextField(decoration: InputDecoration(labelText: "Username")),
+              TextField(decoration: InputDecoration(labelText: "Password"))
+            ],
+          ),
         ),
       ),
     );
