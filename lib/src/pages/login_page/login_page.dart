@@ -14,14 +14,21 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    _usernameController.text = "admin";
-    _passwordController.text = "1234";
+    _usernameController.text = 'admin';
+    _passwordController.text = '1234';
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login Page")),
+      appBar: AppBar(title: const Text('Login Page')),
       body: SizedBox(
         width: double.infinity,
         child: Padding(
@@ -34,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ..._buildTextFields(),
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   ..._buildButtons(),
                 ],
               ),
@@ -47,18 +54,26 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleClickLogin() {
     print(
-      "Login: with ${_usernameController.text} ${_passwordController.text}",
+      'Login: with ${_usernameController.text}',
     );
+    Navigator.pushReplacementNamed(context, '/');
   }
 
   void _handleClickReset() {
-    _usernameController.text = "";
+    _usernameController.clear();
+    _passwordController.clear();
   }
 
   List<ButtonStyleButton> _buildButtons() {
     return [
-      ElevatedButton(onPressed: _handleClickLogin, child: Text("SignUp")),
-      OutlinedButton(onPressed: _handleClickReset, child: Text("Reset")),
+      ElevatedButton(
+        onPressed: _handleClickLogin,
+        child: const Text('Sign in'),
+      ),
+      OutlinedButton(
+        onPressed: _handleClickReset,
+        child: const Text('Reset'),
+      ),
     ];
   }
 
@@ -66,11 +81,12 @@ class _LoginPageState extends State<LoginPage> {
     return [
       TextField(
         controller: _usernameController,
-        decoration: InputDecoration(labelText: "Username"),
+        decoration: const InputDecoration(labelText: 'Username'),
       ),
       TextField(
         controller: _passwordController,
-        decoration: InputDecoration(labelText: "Password"),
+        obscureText: true,
+        decoration: const InputDecoration(labelText: 'Password'),
       ),
     ];
   }
