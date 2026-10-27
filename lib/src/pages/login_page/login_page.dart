@@ -53,17 +53,11 @@ class _LoginPageState extends State<LoginPage> {
                         style: const TextStyle(color: Colors.red),
                       ),
                       IconButton(
-                        onPressed: () {
-                          count = count + 1;
-                          setState(() {});
-                        },
+                        onPressed: _handleClickAdd,
                         icon: const Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: () {
-                          count = count - 1;
-                          setState(() {});
-                        },
+                        onPressed: _handleClickRemove,
                         icon: const Icon(Icons.remove),
                       ),
                     ],
@@ -109,5 +103,15 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const InputDecoration(labelText: 'Password'),
       ),
     ];
+  }
+
+  void _handleClickAdd() {
+    count++;
+    setState(() {});
+  }
+
+  void _handleClickRemove() {
+    count--;
+    setState(() {});
   }
 }
