@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  int count = 0;
 
   @override
   void initState() {
@@ -38,13 +39,35 @@ class _LoginPageState extends State<LoginPage> {
           child: Card(
             child: Container(
               padding: const EdgeInsets.all(32.0),
-              height: 320,
+              height: 800,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ..._buildTextFields(),
                   const SizedBox(height: 32),
                   ..._buildButtons(),
+                  Row(
+                    children: [
+                      Text(
+                        "Debug: ${count}",
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          count = count + 1;
+                          setState(() {});
+                        },
+                        icon: const Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          count = count - 1;
+                          setState(() {});
+                        },
+                        icon: const Icon(Icons.remove),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -55,12 +78,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-    print(
-      'Login: with ${_usernameController.text}',
-    );
+    print('Login: with ${_usernameController.text}');
     Navigator.pushNamed(context, AppRoute.home);
   }
-
 
   void _handleClickReset() {
     _usernameController.clear();
@@ -73,10 +93,7 @@ class _LoginPageState extends State<LoginPage> {
         onPressed: _handleClickLogin,
         child: const Text('Sign in'),
       ),
-      OutlinedButton(
-        onPressed: _handleClickReset,
-        child: const Text('Reset'),
-      ),
+      OutlinedButton(onPressed: _handleClickReset, child: const Text('Reset')),
     ];
   }
 
