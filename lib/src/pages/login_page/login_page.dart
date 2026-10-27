@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../routes.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -56,8 +58,9 @@ class _LoginPageState extends State<LoginPage> {
     print(
       'Login: with ${_usernameController.text}',
     );
-    Navigator.pushReplacementNamed(context, '/');
+    Navigator.pushNamed(context, AppRoute.home);
   }
+
 
   void _handleClickReset() {
     _usernameController.clear();

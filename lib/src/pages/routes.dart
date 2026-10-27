@@ -5,7 +5,7 @@ import 'login_page/login_page.dart';
 import 'register/register_page.dart';
 
 /// Centralized names for the application's named routes.
-class AppRoutes {
+class AppRoute {
 	static const login = 'login';
 	static const home = 'home';
 	static const register = 'register';

@@ -6,7 +6,6 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: AppBar(title: constText("Register")),
       body: Center(child: Text("Register Page")),
     );
   }
