@@ -4,7 +4,7 @@ part of 'login_bloc.dart';
 class LoginState extends Equatable {
   final int count;
 
-  const LoginState({required this.count}); // เป็นการสร้าง constructor ของ class LoginState โดยมี parameter count ซึ่งเป็น  ค่าที่ต้องการให้ state เก็บไว้ และใช้ required เพื่อบังคับให้ต้องมีค่า count เมื่อสร้าง instance ของ LoginState
+  const LoginState({this.count = 0}); // เป็นการสร้าง constructor ของ class LoginState โดยมี parameter count ซึ่งเป็น  ค่าที่ต้องการให้ state เก็บไว้ และใช้ required เพื่อบังคับให้ต้องมีค่า count เมื่อสร้าง instance ของ LoginState
 
   LoginState copyWith({int? count}) {
     return LoginState(count: count ?? this.count); // เป็นการสร้าง method copyWith เพื่อให้สามารถสร้าง instance ใหม่ของ LoginState โดยสามารถเปลี่ยนค่า count ได้ โดยใช้ค่า count ที่ส่งเข้ามาเป็น parameter ถ้าไม่ส่งค่ามา จะใช้ค่า count เดิมของ instance ปัจจุบัน
