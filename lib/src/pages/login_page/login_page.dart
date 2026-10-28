@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_demo_0/src/bloc/bloc/login_bloc.dart';
 
 import '../routes.dart';
 
@@ -49,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     children: [
                       Text(
-                        "Debug: ${count}",
+                        "Debug: ${context.read<LoginBloc>().state.count}",
                         style: const TextStyle(color: Colors.red),
                       ),
                       IconButton(
