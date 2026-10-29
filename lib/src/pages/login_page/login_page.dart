@@ -40,53 +40,58 @@ class _LoginPageState extends State<LoginPage> {
           },
         ),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Card(
-            child: Container(
-              padding: const EdgeInsets.all(32.0),
-              height: 800,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ..._buildTextFields(),
-                  const SizedBox(height: 32),
-                  BlocBuilder<LoginBloc, LoginState>(
-                    builder: (context, state) {
-                      return Text(
-                        "Login Result: ${state.isAuthenticated ? "Authenticated" : "Not Authenticated"}",
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 32),
-                  ..._buildButtons(),
-
-                  Row(
-                    children: [
-                      // ใช้ BlocBuilder เพื่อสร้าง widget ที่สามารถ rebuild ใหม่เมื่อ state ของ LoginBloc เปลี่ยนแปลง โดยใช้ state.count เพื่อแสดงค่าของ count ใน state ของ LoginBloc
-                      BlocBuilder<LoginBloc, LoginState>(
-                        builder: (context, state) {
-                          return Text(
-                            "DebugXX: ${state.count}",
-                            style: const TextStyle(color: Colors.red),
-                          );
-                        },
-                      ),
-                      IconButton(
-                        onPressed: () =>
-                            context.read<LoginBloc>().add(LoginEventAdd()),
-                        icon: const Icon(Icons.add),
-                      ),
-                      IconButton(
-                        onPressed: () =>
-                            context.read<LoginBloc>().add(LoginEventRemove()),
-                        icon: const Icon(Icons.remove),
-                      ),
-                    ],
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Card(
+              child: Container(
+                padding: const EdgeInsets.all(32.0),
+                height: 800,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ..._buildTextFields(),
+                    const SizedBox(height: 32),
+                    BlocBuilder<LoginBloc, LoginState>(
+                      builder: (context, state) {
+                        return Text(
+                          "Login Result: ${state.isAuthenticated ? "Authenticated" : "Not Authenticated"}",
+                          style: TextStyle(
+                            color: state.isAuthenticated ? Colors.green : Colors.red,
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 32),
+                    ..._buildButtons(),
+        
+                    Row(
+                      children: [
+                        // ใช้ BlocBuilder เพื่อสร้าง widget ที่สามารถ rebuild ใหม่เมื่อ state ของ LoginBloc เปลี่ยนแปลง โดยใช้ state.count เพื่อแสดงค่าของ count ใน state ของ LoginBloc
+                        BlocBuilder<LoginBloc, LoginState>(
+                          builder: (context, state) {
+                            return Text(
+                              "DebugXX: ${state.count}",
+                              style: const TextStyle(color: Colors.red),
+                            );
+                          },
+                        ),
+                        IconButton(
+                          onPressed: () =>
+                              context.read<LoginBloc>().add(LoginEventAdd()),
+                          icon: const Icon(Icons.add),
+                        ),
+                        IconButton(
+                          onPressed: () =>
+                              context.read<LoginBloc>().add(LoginEventRemove()),
+                          icon: const Icon(Icons.remove),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
