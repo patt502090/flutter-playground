@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_demo_0/src/bloc/bloc/login_bloc.dart';
+import 'package:flutter_demo_0/src/models/user.dart';
 
 import '../routes.dart';
 
@@ -52,7 +53,14 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   ..._buildTextFields(),
                   const SizedBox(height: 32),
+                  BlocBuilder<LoginBloc, LoginState>(
+                    builder: (context, state) {
+                      return Text("Login Result: ${state.isAuthenticated ? "Authenticated" : "Not Authenticated"}");
+                    },
+                  ),
+                  const SizedBox(height: 32),
                   ..._buildButtons(),
+
                   Row(
                     children: [
                       // ใช้ BlocBuilder เพื่อสร้าง widget ที่สามารถ rebuild ใหม่เมื่อ state ของ LoginBloc เปลี่ยนแปลง โดยใช้ state.count เพื่อแสดงค่าของ count ใน state ของ LoginBloc
@@ -86,8 +94,13 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-    print('Login: with ${_usernameController.text}');
-    Navigator.pushNamed(context, AppRoute.home);
+    // print('Login: with ${_usernameController.text}');
+    // Navigator.pushNamed(context, AppRoute.home);
+    final user = User(
+      username: _usernameController.text,
+      password: _passwordController.text,
+    );
+    context.read<LoginBloc>().add(LoginEventLogin(payload: user));
   }
 
   void _handleClickReset() {
