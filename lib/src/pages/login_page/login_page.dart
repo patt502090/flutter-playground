@@ -32,7 +32,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login Page')),
+      appBar: AppBar(
+        title: BlocBuilder<LoginBloc, LoginState>(
+          builder: (context, state) {
+            return Text('Login Page: ${state.count}');
+          },
+        ),
+      ),
       body: SizedBox(
         width: double.infinity,
         child: Padding(
@@ -59,11 +65,13 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       IconButton(
-                        onPressed: () => context.read<LoginBloc>().add(LoginEventAdd()),
+                        onPressed: () =>
+                            context.read<LoginBloc>().add(LoginEventAdd()),
                         icon: const Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: () => context.read<LoginBloc>() .add(LoginEventRemove()),
+                        onPressed: () =>
+                            context.read<LoginBloc>().add(LoginEventRemove()),
                         icon: const Icon(Icons.remove),
                       ),
                     ],
