@@ -27,7 +27,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
     on<LoginEventLogin>((event, emit) async {
       // execute something
-      if (event.payload.username == "admin" && event.payload.password == "admin") {
+      if (event.payload.username == "admin" &&
+          event.payload.password == "admin") {
         // emit เหมือนการยิง signal ไปบอก bloc ว่า state เปลี่ยนแปลงแล้ว มันจะสามารถเปลี่ยนแปลง value ของ state ได้
         emit(state.copyWith(isAuthenticated: true));
       } else {
