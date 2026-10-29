@@ -8,4 +8,7 @@ abstract class LoginEvent extends Equatable {
 // ไว้นิยาวว่าเรามี event อะไรบ้างที่เราจะใช้ใน bloc ของเรา โดยแต่ละ event จะเป็น class ที่สืบทอดมาจาก LoginEvent
 class LoginEventAdd extends LoginEvent {}
 class LoginEventRemove extends LoginEvent {}
-class LoginEventLogin extends LoginEvent {}
+class LoginEventLogin extends LoginEvent {
+  final User payload; // payload เป็นข้อมูลที่เราต้องการส่งไปยัง bloc เพื่อใช้ในการประมวลผล event นั้น ๆ
+  LoginEventLogin({required this.payload}); // constructor ของ class LoginEventLogin โดยมี parameter
+}
