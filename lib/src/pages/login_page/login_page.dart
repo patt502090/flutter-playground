@@ -55,7 +55,9 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 32),
                   BlocBuilder<LoginBloc, LoginState>(
                     builder: (context, state) {
-                      return Text("Login Result: ${state.isAuthenticated ? "Authenticated" : "Not Authenticated"}");
+                      return Text(
+                        "Login Result: ${state.isAuthenticated ? "Authenticated" : "Not Authenticated"}",
+                      );
                     },
                   ),
                   const SizedBox(height: 32),
