@@ -50,9 +50,14 @@ class _LoginPageState extends State<LoginPage> {
                   ..._buildButtons(),
                   Row(
                     children: [
-                      Text(
-                        "Debug: ${context.read<LoginBloc>().state.count}",
-                        style: const TextStyle(color: Colors.red),
+                      // ใช้ BlocBuilder เพื่อสร้าง widget ที่สามารถ rebuild ใหม่เมื่อ state ของ LoginBloc เปลี่ยนแปลง โดยใช้ state.count เพื่อแสดงค่าของ count ใน state ของ LoginBloc
+                      BlocBuilder<LoginBloc, LoginState>(
+                        builder: (context, state) {
+                          return Text(
+                            "DebugXX: ${state.count}",
+                            style: const TextStyle(color: Colors.red),
+                          );
+                        },
                       ),
                       IconButton(
                         onPressed: _handleClickAdd,
