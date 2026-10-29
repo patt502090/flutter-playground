@@ -8,7 +8,7 @@ class LoginState extends Equatable {
 
   const LoginState({this.count = 10, this.isAuthenticated = false}); // เป็นการสร้าง constructor ของ class LoginState โดยมี parameter count ซึ่งเป็น  ค่าที่ต้องการให้ state เก็บไว้ และใช้ required เพื่อบังคับให้ต้องมีค่า count เมื่อสร้าง instance ของ LoginState
 
-  LoginState copyWith({int? count}) {
+  LoginState copyWith({int? count, bool? isAuthenticated}) {
     // copy constructor  func clone object ปัจจุบันกำลัง render เราเลยจะไม่ไปรบกวน
     return LoginState(
       count: count ?? this.count,
