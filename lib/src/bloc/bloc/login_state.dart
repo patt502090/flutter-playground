@@ -1,5 +1,6 @@
 part of 'login_bloc.dart';
 
+enum AuthenticationStatus { init, success, failed  }
 @immutable
 class LoginState extends Equatable {
   //Euqatable เป็น package ที่ช่วยให้ class สามารถเปรียบเทียบความเท่ากันของ instance ได้ง่ายขึ้น โดยไม่ต้องเขียน method == และ hashCode เอง
