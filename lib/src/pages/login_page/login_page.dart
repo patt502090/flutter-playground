@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  int count = 0;
 
   @override
   void initState() {
@@ -60,11 +59,11 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       IconButton(
-                        onPressed: _handleClickAdd,
+                        onPressed: () => context.read<LoginBloc>().add(LoginEventAdd()),
                         icon: const Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: _handleClickRemove,
+                        onPressed: () => context.read<LoginBloc>() .add(LoginEventRemove()),
                         icon: const Icon(Icons.remove),
                       ),
                     ],
@@ -110,15 +109,5 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const InputDecoration(labelText: 'Password'),
       ),
     ];
-  }
-
-  void _handleClickAdd() {
-    count++;
-    setState(() {});
-  }
-
-  void _handleClickRemove() {
-    count--;
-    setState(() {});
   }
 }

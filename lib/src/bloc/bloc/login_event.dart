@@ -7,4 +7,4 @@ abstract class LoginEvent extends Equatable {
 }
 // ไว้นิยาวว่าเรามี event อะไรบ้างที่เราจะใช้ใน bloc ของเรา โดยแต่ละ event จะเป็น class ที่สืบทอดมาจาก LoginEvent
 class LoginEventAdd extends LoginEvent {}
-class LoginEventSubtract extends LoginEvent {}
+class LoginEventRemove extends LoginEvent {}

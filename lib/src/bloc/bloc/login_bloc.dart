@@ -4,11 +4,21 @@ import 'package:meta/meta.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
-
+// ไว้นืยาม logic
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginState()) {
-    on<LoginEvent>((event, emit) {
-      // TODO: implement event handler
+    // on listener ใช้ในการดักฟัง event ที่เกิดขึ้นใน bloc และทำการเปลี่ยนแปลง state ตาม event ที่เกิดขึ้น
+    // Add
+    on<LoginEventAdd>((event, emit) {
+      // execute something 
+      // emit เหมือนการยิง signal ไปบอก bloc ว่า state เปลี่ยนแปลงแล้ว มันจะสามารถเปลี่ยนแปลง value ของ state ได้
+      emit(state.copyWith(count: state.count + 1));
+    });
+    // Remove
+    on<LoginEventRemove>((event, emit) {
+      // execute something 
+      // emit เหมือนการยิง signal ไปบอก bloc ว่า state เปลี่ยนแปลงแล้ว มันจะสามารถเปลี่ยนแปลง value ของ state ได้
+      emit(state.copyWith(count: state.count - 1));
     });
   }
 }
