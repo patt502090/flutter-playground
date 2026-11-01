@@ -9,20 +9,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    _loadFeed();
-  }
+  VoidCallback? get _handleClick => null;
 
-  Future<void> _loadFeed() async {
-    try {
-      final response = await WebApiService().feed();
-      debugPrint('Feed response: ${response.data}');
-    } on Object catch (error, stackTrace) {
-      debugPrint('Unable to load feed: $error');
-      debugPrintStack(stackTrace: stackTrace);
-    }
+  void initSate() {
+    super.initState();
+    WebApiService().feed();
   }
 
   @override
@@ -59,9 +50,9 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  List<ElevatedButton> _buildButtons() {
+  List<ElevatedButton> _buildButtons() { 
     return [
-      ElevatedButton(onPressed: () {}, child: Text("Click Me")),
+      ElevatedButton(onPressed: _handleClick, child: Text("Click Me")),
     ];
   }
 }
