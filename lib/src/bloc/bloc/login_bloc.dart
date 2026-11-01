@@ -36,7 +36,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(state.copyWith(isAuthenticated: true));
         if (navigatorState.currentState != null) {
           Navigator.pushReplacementNamed(
-            navigatorState.currentState!,
+            navigatorState.currentState!.context,
             AppRoute.home,
           );
         }
