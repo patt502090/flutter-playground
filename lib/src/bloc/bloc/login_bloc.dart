@@ -34,12 +34,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           event.payload.password == "admin") {
         // emit เหมือนการยิง signal ไปบอก bloc ว่า state เปลี่ยนแปลงแล้ว มันจะสามารถเปลี่ยนแปลง value ของ state ได้
         emit(state.copyWith(isAuthenticated: true));
-        if (navigatorState.currentState != null) {
-          Navigator.pushReplacementNamed(
-            navigatorState.currentState!.context,
-            AppRoute.home,
-          );
-        }
+        navigatorState.currentState?.pushReplacementNamed(AppRoute.home);
       } else {
         emit(state.copyWith(isAuthenticated: false));
       }
