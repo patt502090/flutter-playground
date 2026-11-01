@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_demo_0/src/app.dart';
 import 'package:flutter_demo_0/src/models/user.dart';
+import 'package:flutter_demo_0/src/pages/routes.dart';
 import 'package:meta/meta.dart';
 
 part 'login_event.dart';
@@ -31,6 +34,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           event.payload.password == "admin") {
         // emit เหมือนการยิง signal ไปบอก bloc ว่า state เปลี่ยนแปลงแล้ว มันจะสามารถเปลี่ยนแปลง value ของ state ได้
         emit(state.copyWith(isAuthenticated: true));
+        if (navigatorState.currentState != null) {
+          Navigator.pushReplacementNamed(
+            navigatorState.currentState!,
+            AppRoute.home,
+          );
+        }
       } else {
         emit(state.copyWith(isAuthenticated: false));
       }

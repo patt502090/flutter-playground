@@ -5,6 +5,7 @@ import 'package:flutter_demo_0/src/pages/login_page/login_page.dart';
 
 import 'pages/routes.dart';
 
+final navigatorState = GlobalKey<NavigatorState>();
 class PattApp extends StatelessWidget {
   const PattApp({super.key});
 
@@ -16,9 +17,11 @@ class PattApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [loginBloc],
       child: MaterialApp(
-      title: 'PattApp',
-      routes: AppRoute.all,
-      home: LoginPage(),
+        title: 'PattApp',
+        routes: AppRoute.all,
+        home: LoginPage(),
+        navigatorKey: navigatorState,
+        
     )
     );
   }
