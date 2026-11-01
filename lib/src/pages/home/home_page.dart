@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_0/src/services/webapi_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,7 +9,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  void _handleClick() {}
+  @override
+  void initState() {
+    super.initState();
+    _loadFeed();
+  }
+
+  Future<void> _loadFeed() async {
+    try {
+      final response = await WebApiService().feed();
+      debugPrint('Feed response: ${response.data}');
+    } on Object catch (error, stackTrace) {
+      debugPrint('Unable to load feed: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +59,9 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  List<ElevatedButton> _buildButtons() { 
+  List<ElevatedButton> _buildButtons() {
     return [
-      ElevatedButton(onPressed: _handleClick, child: Text("Click Me")),
+      ElevatedButton(onPressed: () {}, child: Text("Click Me")),
     ];
   }
 }
