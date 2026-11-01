@@ -35,6 +35,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // emit เหมือนการยิง signal ไปบอก bloc ว่า state เปลี่ยนแปลงแล้ว มันจะสามารถเปลี่ยนแปลง value ของ state ได้
         emit(state.copyWith(isAuthenticated: true));
         navigatorState.currentState?.pushReplacementNamed(AppRoute.home);
+//         ในหน้า Widget       มี context อยู่แล้ว จึงส่ง context ได้
+// ใน Bloc             ไม่มี context จึงใช้ navigatorKey
+// currentState        คือ NavigatorState ที่สั่งเปลี่ยนหน้าได้โดยตรง
       } else {
         emit(state.copyWith(isAuthenticated: false));
       }
