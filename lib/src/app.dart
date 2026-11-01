@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_demo_0/src/bloc/bloc/login_bloc.dart';
-import 'package:flutter_demo_0/src/pages/login_page/login_page.dart';
+import 'package:flutter_demo_0/src/pages/login/login_page.dart';
 
 import 'pages/routes.dart';
 

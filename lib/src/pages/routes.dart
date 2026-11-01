@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'home/home_page.dart';
-import 'login_page/login_page.dart';
+import 'login/login_page.dart';
 import 'register/register_page.dart';
 
 /// Centralized names for the application's named routes.
